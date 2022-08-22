@@ -10,6 +10,10 @@ import Config
 config :elixir_staple,
   ecto_repos: [ElixirStaple.Repo]
 
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json"]
+}
+
 # Configures the endpoint
 config :elixir_staple, ElixirStapleWeb.Endpoint,
   url: [host: "localhost"],
