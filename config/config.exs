@@ -15,7 +15,7 @@ config :elixir_staple, ElixirStapleWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: ElixirStapleWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: ElixirStaple.PubSub,
-  live_view: [signing_salt: "GtIS6cEA"]
+  live_view: [signing_salt: "Xt8DLuY9"]
 
 # Configures the mailer
 #
@@ -37,6 +37,18 @@ config :esbuild,
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind plugin
+config :tailwind,
+  version: "3.1.8",
+  default: [
+    args: ~w(
+    --config=tailwind.config.js
+    --input=css/app.css
+    --output=../priv/static/assets/app.css
+  ),
+    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configures Elixir's Logger
