@@ -9,7 +9,6 @@ defmodule ElixirStaple.Repo.Migrations.MigrateResources1 do
 
   def up do
     create table(:votes, primary_key: false) do
-      add :email, :text, null: false
       add :id, :uuid, null: false, primary_key: true
       add :poll_id, :uuid
     end

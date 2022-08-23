@@ -1,6 +1,19 @@
 {
   "attributes": [
     {
+      "allow_nil?": true,
+      "default": "[]",
+      "generated?": false,
+      "name": "answers",
+      "primary_key?": false,
+      "references": null,
+      "size": null,
+      "type": [
+        "array",
+        "bigint"
+      ]
+    },
+    {
       "allow_nil?": false,
       "default": "nil",
       "generated?": false,
@@ -32,13 +45,36 @@
       },
       "size": null,
       "type": "uuid"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "name": "user_id",
+      "primary_key?": false,
+      "references": {
+        "destination_field": "id",
+        "destination_field_default": null,
+        "destination_field_generated": null,
+        "multitenancy": {
+          "attribute": null,
+          "global": null,
+          "strategy": null
+        },
+        "name": "votes_user_id_fkey",
+        "on_delete": null,
+        "on_update": null,
+        "table": "users"
+      },
+      "size": null,
+      "type": "uuid"
     }
   ],
   "base_filter": null,
   "check_constraints": [],
   "custom_indexes": [],
   "has_create_action": true,
-  "hash": "E69E85C191C443B9BD18005344C4502A43BE59380E72CF4EC8EE70BBFBBBCC8F",
+  "hash": "5A1C3832A2ADB9C3F1F1C2A2B1B1FA65DE2925F19E5B18D2BC83B83B06404055",
   "identities": [],
   "multitenancy": {
     "attribute": null,

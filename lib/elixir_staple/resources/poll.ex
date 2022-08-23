@@ -1,5 +1,10 @@
 defmodule ElixirStaple.Poll do
-  use Ash.Resource
+  use Ash.Resource, data_layer: AshPostgres.DataLayer
+
+  postgres do
+    table "polls"
+    repo ElixirStaple.Repo
+  end
 
   attributes do
     uuid_primary_key :id
