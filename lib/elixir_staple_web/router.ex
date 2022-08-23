@@ -20,10 +20,11 @@ defmodule ElixirStapleWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ElixirStapleWeb do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+    pipe_through(:api)
+
+    forward "/", ElixirStaple.Api.Router
+  end
 
   # Enables LiveDashboard only for development
   #

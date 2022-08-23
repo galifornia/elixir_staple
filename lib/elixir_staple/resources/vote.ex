@@ -1,9 +1,26 @@
 defmodule ElixirStaple.Vote do
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer,
+    extensions: [
+      AshJsonApi.Resource
+    ]
 
   postgres do
     table "votes"
     repo ElixirStaple.Repo
+  end
+
+  json_api do
+    type "vote"
+
+    routes do
+      base "/votes"
+
+      get :read
+      index :read
+      post :create
+      patch :update
+      delete :destroy
+    end
   end
 
   attributes do
