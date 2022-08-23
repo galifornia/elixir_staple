@@ -14,8 +14,11 @@ defmodule ElixirStaple.User do
         match: ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i
       ]
 
+
+
     relationships do
       has_many :polls, ElixirStaple.Poll, destination_field: :user_id
+      has_many :votes, ElixirStaple.Vote, destination_field: :user_id
     end
 
     uuid_primary_key :id

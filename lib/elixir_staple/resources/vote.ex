@@ -1,23 +1,14 @@
 defmodule ElixirStaple.Vote do
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
-
-  postgres do
-    table "votes"
-    repo ElixirStaple.Repo
-  end
+  use Ash.Resource
 
   attributes do
-    attribute :email, :string,
-      allow_nil?: false,
-      constraints: [
-        # Note: This regex is just an example
-        match: ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i
-      ]
+    attribute :answers, {:array, :integer}, default: []
 
     uuid_primary_key :id
 
     relationships do
       belongs_to :poll, ElixirStaple.Poll
+      belongs_to :user, ElixirStaple.User
     end
   end
 

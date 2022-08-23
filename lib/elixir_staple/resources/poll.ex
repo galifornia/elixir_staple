@@ -1,10 +1,5 @@
 defmodule ElixirStaple.Poll do
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
-
-  postgres do
-    table "polls"
-    repo ElixirStaple.Repo
-  end
+  use Ash.Resource
 
   attributes do
     uuid_primary_key :id
@@ -18,8 +13,9 @@ defmodule ElixirStaple.Poll do
       constraints max_length: 255
     end
 
-    attribute :choices, {:array, :string} do
-    end
+    attribute :choices, {:array, :string}, allow_nil?: false, default: []
+
+    attribute :invites, {:array, :uuid}, allow_nil?: false, default: []
 
     attribute :public, :boolean, allow_nil?: false, default: false
 
